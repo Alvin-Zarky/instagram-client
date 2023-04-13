@@ -1,0 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow&family=Lato:wght@300&family=Poppins:wght@300&family=Raleway:wght@300&family=Roboto:wght@300&family=Source+Sans+Pro:wght@300&display=swap");
+@import "./variable.scss";
+@import "./mixin.scss";
+
+a {
+  text-decoration: none;
+}
+.padd-b0 {
+  margin-bottom: 10px !important;
+}

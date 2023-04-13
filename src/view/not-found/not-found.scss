@@ -1,0 +1,20 @@
+@import "../../assets/scss/variable.scss";
+
+.contain-page-not-found {
+  text-align: center;
+  margin-top: 35px;
+  .title-page-bar {
+    margin-bottom: 17px;
+    span {
+      font-weight: 600;
+      font-size: 23px;
+      font-family: $font-apple-system;
+    }
+  }
+  .detail-page-bar {
+    p {
+      font-family: $font-apple-system;
+      font-size: 16px;
+    }
+  }
+}

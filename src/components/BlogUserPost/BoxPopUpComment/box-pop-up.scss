@@ -1,0 +1,158 @@
+@import "../../../assets/scss/variable.scss";
+
+.box-comment-gallary {
+  width: 70%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin: auto;
+  height: 730px;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  z-index: 200;
+  border-radius: 4px;
+  .flex-row {
+    display: flex;
+    .left-side-image-slider {
+      width: 53%;
+      background-color: black;
+      height: 730px;
+      .image-slider-cover {
+        height: 730px;
+        img {
+          width: 100%;
+          height: 730px;
+          object-fit: cover;
+          object-position: center;
+        }
+      }
+    }
+    .user-comment-discussion {
+      width: 47%;
+      .contain-user-comment {
+        .top-header-bar {
+          display: flex;
+          align-items: center;
+          padding: 13px 20px;
+          border-bottom: 1px solid #e6e6e6;
+          img {
+            height: 35px;
+            border-radius: 50px;
+            object-fit: cover;
+            object-position: center;
+            margin-right: 10px;
+          }
+          span {
+            font-size: 14px;
+            font-family: $font-apple-system;
+            font-weight: 550;
+          }
+        }
+        .body-comment-bar {
+          padding: 13px 20px;
+          .user-header-bar {
+            @extend .top-header-bar;
+            align-items: normal;
+            border: none;
+            padding: 0;
+            span {
+              padding-top: -5px;
+            }
+            .description {
+              font-weight: normal;
+              font-family: $font-apple-system;
+              font-size: 13px;
+              margin-left: 5px;
+            }
+          }
+          .list-all-user-comment {
+            overflow-y: scroll;
+            height: 480px;
+            .user-comment {
+              margin-top: 17px;
+              display: flex;
+              align-items: center;
+              img {
+                height: 35px;
+                object-fit: cover;
+                object-position: center;
+                border-radius: 50px;
+                margin-right: 10px;
+              }
+              span {
+                font-family: $font-apple-system;
+                font-weight: 550;
+                font-size: 14px;
+              }
+              .naming-comment {
+                font-weight: normal;
+                margin-left: 6px;
+                font-size: 13px;
+              }
+            }
+            &::-webkit-scrollbar {
+              display: none;
+            }
+            ::-moz-scrollbar,
+            ::-ms-scrollbar {
+              display: none !important;
+            }
+          }
+          .user-comment-footer {
+            .list-icon-reaction {
+              display: flex;
+              justify-content: space-between;
+              .icon-reactions {
+                display: flex;
+                gap: 10px;
+                svg {
+                  cursor: pointer;
+                }
+                .icon-active {
+                  color: red;
+                }
+              }
+            }
+            .user-likes {
+              margin-top: 10px;
+              span {
+                font-family: $font-apple-system;
+                font-size: 14px;
+                font-weight: 550;
+              }
+            }
+          }
+        }
+        .form-add-comment {
+          margin-top: 0px;
+          border-top: 1px solid #e6e6e6;
+          padding: 13px 20px;
+          position: relative;
+
+          form {
+            input {
+              width: 100%;
+              font-family: $font-apple-system;
+              font-size: 13px;
+              border: none;
+              &:focus {
+                outline: none;
+              }
+            }
+            button {
+              position: absolute;
+              top: 15px;
+              right: 10px;
+              background-color: transparent;
+              border: none;
+              color: rgb(31, 125, 233);
+              font-family: $font-apple-system;
+              font-size: 13px;
+              font-weight: 550;
+            }
+          }
+        }
+      }
+    }
+  }
+}

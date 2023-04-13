@@ -1,0 +1,129 @@
+.main-container-auth-screen {
+  .main-contain-page {
+    width: 340px;
+    margin: 40px auto;
+    .box-form-auth {
+      margin-bottom: 0;
+      border: 1px solid #ddd;
+      padding: 15px 40px;
+      text-align: center;
+      .logo-instagram {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        img {
+          height: 80px;
+          object-fit: cover;
+          object-position: center;
+        }
+      }
+      .form-container {
+        input {
+          width: 100%;
+          padding: 10px 13px;
+          border: 1px solid #ddd;
+          font-size: 13px;
+          margin-bottom: 12px;
+          border-radius: 3px;
+          font-family: "Roboto", sans-serif;
+          background-color: rgba(225, 225, 225, 0.2);
+          &:focus {
+            outline: none;
+            border: 1px solid #eee;
+          }
+        }
+        .form-agreement {
+          margin-top: 15px;
+          margin-bottom: 20px;
+          span {
+            font-weight: bolder;
+            font-family: "Barlow", sans-serif;
+            font-size: 14px;
+          }
+        }
+        .box-err-message {
+          width: 100%;
+          padding: 10px;
+          margin-top: -30px;
+          margin-bottom: 40px;
+          background-color: rgb(255, 57, 57);
+          border-radius: 3px;
+          display: flex;
+          justify-content: center;
+          span {
+            font-family: "Roboto", sans-serif;
+            font-size: 13px;
+            font-weight: bolder;
+            color: white;
+          }
+        }
+      }
+      .btn-submit {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+        border-radius: 5px;
+        padding: 7px;
+        cursor: pointer;
+        border: none;
+        margin-bottom: 50px;
+        background-color: #5aafff;
+        span {
+          font-size: 14px;
+          color: white;
+          font-weight: bolder;
+          font-family: "Barlow", sans-serif;
+        }
+      }
+    }
+    .box-form-direct-page {
+      display: flex;
+      padding: 17px 40px;
+      justify-content: center;
+      text-align: center;
+      font-weight: bolder;
+      font-family: "Roboto", sans-serif;
+      font-size: 15px;
+      border: 1px solid #ddd;
+      margin-top: 15px;
+      align-items: center;
+      a {
+        margin-left: 7px;
+        font-size: 13.5px;
+        color: rgb(40, 157, 252);
+      }
+    }
+    .get-the-app {
+      margin-top: 15px;
+      text-align: center;
+      span {
+        font-size: 14px;
+        font-weight: bolder;
+        font-family: "Roboto", sans-serif;
+      }
+      .image-public-store {
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        img {
+          height: 40px;
+          object-fit: cover;
+          object-position: center;
+          cursor: pointer;
+        }
+      }
+    }
+    .content-bar-footer {
+      width: 100%;
+      text-align: center;
+      margin-top: 80px;
+      span {
+        font-size: 14px;
+        font-weight: bolder;
+        color: #898989;
+        font-family: "Raleway", sans-serif;
+      }
+    }
+  }
+}

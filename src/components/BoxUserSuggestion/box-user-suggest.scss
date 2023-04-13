@@ -1,0 +1,75 @@
+@import "../../assets/scss/variable.scss";
+
+.top-profile-user {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .box-image-user {
+    display: flex;
+    align-items: center;
+    img {
+      height: 53px;
+      object-fit: cover;
+      object-position: center;
+      margin-right: 15px;
+    }
+    .box-title-user {
+      .top-title {
+        margin-bottom: -3px;
+        span {
+          font-weight: 550;
+          font-family: $font-apple-system;
+          font-size: 15px;
+        }
+      }
+      .bottom-title {
+        span {
+          color: #ababab;
+          font-size: 14px;
+          font-family: $font-apple-system;
+        }
+      }
+    }
+  }
+  .btn-switch {
+    span {
+      color: rgb(37, 126, 235);
+      font-size: 13px;
+      font-family: $font-apple-system;
+      cursor: pointer;
+      font-weight: 550;
+    }
+  }
+}
+.box-suggestion {
+  margin-bottom: 10px;
+  cursor: pointer;
+  .box-image {
+    img {
+      height: 40px;
+    }
+  }
+  .btn-follow span {
+    font-size: 12px;
+  }
+  .title-custom {
+    margin-bottom: -3px !important;
+    span {
+      font-size: 14px !important;
+      font-weight: 550 !important;
+    }
+  }
+  .user-custom span {
+    font-size: 13px !important;
+  }
+}
+.dashboard-footer {
+  margin-top: 25px;
+  span {
+    font-family: $font-apple-system;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #afafaf;
+  }
+}

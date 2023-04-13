@@ -1,0 +1,35 @@
+@import "../../../assets/scss/variable.scss";
+
+.box-setting-config {
+  width: 400px;
+  margin: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 13px;
+  z-index: 200;
+  overflow: hidden;
+  .box-list {
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      li {
+        display: block;
+        cursor: pointer;
+        padding: 14px 25px;
+        color: black;
+        text-align: center;
+        font-family: $font-apple-system;
+        font-size: 14px;
+        border-bottom: 1px solid #eee;
+      }
+      .text-bold {
+        color: red;
+        font-weight: 550;
+      }
+    }
+  }
+}
