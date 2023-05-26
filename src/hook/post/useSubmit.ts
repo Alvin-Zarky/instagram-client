@@ -41,25 +41,6 @@ const useSubmit = () => {
       ],
     };
 
-    // if (likesPost.length > 0) {
-    //   likesPost.forEach((val: PostPartial) => {
-    //     values = {
-    //       ...values,
-    //       likes:
-    //         val.id === auth?.id
-    //           ? []
-    //           : [
-    //             {
-    //               id: auth?.id!,
-    //               name: auth?.name!,
-    //               email: auth?.email!,
-    //               photo: auth?.photo!,
-    //             },
-    //           ],
-    //     };
-    //   });
-    // }
-
     updatePostLike.mutate(values);
   };
 

@@ -1,0 +1,54 @@
+@import "../../assets/scss/variable.scss";
+
+.box-post-user {
+  width: 100%;
+  height: 300px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  position: relative;
+  img,
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .pop-up-hover {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    display: none;
+  }
+  .box-pop-hover {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    color: white;
+    svg {
+      margin-right: 7px;
+      font-size: 20px;
+    }
+    span {
+      font-family: $font-apple-system;
+      font-size: 15px;
+      font-weight: 550;
+    }
+  }
+  &:hover {
+    .pop-up-hover {
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,46 @@
+@import "../../assets/scss/variable.scss";
+
+.title-body-overview {
+  margin-bottom: 15px;
+  span {
+    font-size: 17px !important;
+    font-weight: 550 !important;
+    font-family: $font-apple-system;
+  }
+}
+.flex-body-overview {
+  display: flex;
+  margin-top: 10px;
+  justify-content: space-between;
+  align-items: center;
+  span {
+    font-size: 15px !important;
+    font-weight: normal !important;
+    font-family: $font-apple-system;
+  }
+}
+.description-page {
+  margin-top: 10px;
+  border-bottom: 1px solid #ddd;
+  p {
+    font-family: $font-apple-system;
+    font-size: 13px;
+    padding-bottom: 10px;
+  }
+}
+.supporting-help {
+  margin-top: 20px;
+  span {
+    font-size: 16px !important;
+  }
+}
+.supporting-link {
+  margin-top: 10px;
+  cursor: pointer;
+  display: inline-block;
+  span {
+    font-family: $font-apple-system;
+    font-size: 15px !important;
+    color: rgb(52, 130, 238);
+  }
+}

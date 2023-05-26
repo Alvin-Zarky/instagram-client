@@ -17,6 +17,7 @@
       font-family: $font-apple-system;
       font-weight: 550;
       font-size: 14px;
+      color: black;
     }
     svg {
       cursor: pointer;
@@ -26,13 +27,15 @@
     .hour-ago {
       margin-left: 3px;
       color: #8b8b8b;
+      font-weight: normal;
     }
   }
   .box-image-slider-post {
     width: 100%;
     height: 540px;
     margin-top: 10px;
-    img {
+    img,
+    video {
       width: 100%;
       border: 1px solid #c7c7c7;
       height: 540px;

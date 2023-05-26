@@ -1,0 +1,28 @@
+@import "../../assets/scss/variable.scss";
+
+.static-side {
+  position: static;
+}
+.web-page-offline {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  .image-logo {
+    margin-top: 70px;
+    margin-bottom: 70px;
+    img {
+      height: 150px;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+  .title-description {
+    span {
+      font-family: $font-apple-system;
+      font-size: 19px;
+    }
+  }
+}

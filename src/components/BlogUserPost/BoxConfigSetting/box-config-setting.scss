@@ -11,6 +11,14 @@
   border-radius: 13px;
   z-index: 200;
   overflow: hidden;
+  .box-title-overview {
+    padding: 25px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    span {
+      font-size: 18px;
+    }
+  }
   .box-list {
     ul {
       list-style: none;
@@ -25,6 +33,14 @@
         font-family: $font-apple-system;
         font-size: 14px;
         border-bottom: 1px solid #eee;
+      }
+      .text-bold-blue {
+        color: rgb(49, 166, 255);
+        font-weight: 550;
+        width: 100%;
+        overflow: hidden;
+        display: inline-block;
+        position: relative;
       }
       .text-bold {
         color: red;

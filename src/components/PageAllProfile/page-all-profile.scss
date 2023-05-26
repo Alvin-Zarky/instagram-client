@@ -1,0 +1,76 @@
+@import "../../assets/scss/variable.scss";
+
+.profile-edit-container {
+  padding: 25px 22px;
+  .main-width-edit {
+    span {
+      font-family: $font-apple-system;
+      font-weight: 550;
+      font-size: 24px;
+    }
+    .box-edit-setting-profile {
+      padding: 25px 100px;
+      .main-container {
+        border: 1px solid #cfcfcf;
+        border-radius: 3px;
+        .flex-container {
+          display: flex;
+          .left-edit-menu-side {
+            width: 255px;
+            border-right: 1px solid #cfcfcf;
+            .top-overview-edit-profile {
+              padding: 25px 25px;
+              border-bottom: 1px solid #cfcfcf;
+              .meta-logo {
+                img {
+                  height: 35px;
+                }
+              }
+              .account-center {
+                margin-bottom: 7px;
+                span {
+                  font-size: 16px;
+                }
+              }
+              .edit-profile-detail {
+                font-family: $font-apple-system;
+                font-size: 13.5px;
+                p {
+                  padding-bottom: 0;
+                }
+              }
+            }
+            .list-menu-profile {
+              ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                li {
+                  a {
+                    display: block;
+                    font-weight: $font-apple-system;
+                    font-size: 14px;
+                    color: black;
+                    padding-top: 13px;
+                    padding-bottom: 13px;
+                    padding-left: 25px;
+                  }
+                  .active {
+                    border-left: 2px solid black;
+                    font-weight: 550;
+                  }
+                }
+              }
+            }
+          }
+          .right-box-side {
+            width: 700px;
+            .main-width-right-side {
+              padding: 30px 40px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

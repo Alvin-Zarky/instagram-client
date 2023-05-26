@@ -9,7 +9,8 @@ const useAuthen = () =>{
 
   const storage= new Storage("token")
   const token = storage.getItem()
-
+  // const token = localStorage.getItem("token") ? JSON.parse(localStorage.getItem("token")!) : null
+  
   const dispatch= useAppDispatch()
   const queryClient= useQueryClient()
 
@@ -19,6 +20,8 @@ const useAuthen = () =>{
     onSuccess:(data: User) =>{
       dispatch(authSignInAsync(data))
       storage.setItem(data.token!)
+      // localStorage.setItem("user", JSON.stringify(data))
+      // storage.setItem()
     } 
   })
   
@@ -28,7 +31,7 @@ const useAuthen = () =>{
     onSuccess:(data: User) =>{
       dispatch(authSignInAsync(data))
       queryClient.refetchQueries(["getAllUser"])
-      storage.setItem(data.token!)
+      // storage.setItem(data.token!)
     },
   })
 
@@ -37,6 +40,11 @@ const useAuthen = () =>{
     mutationFn:() => userLogOut(),
     onSuccess:(_data) =>{
       dispatch(authSignOutAsync())
+      queryClient.removeQueries(["getPostUser"])
+      queryClient.removeQueries(["getUserSavePost"])
+      queryClient.removeQueries(["userProfile"])
+      queryClient.removeQueries(["getMessage"])
+      queryClient.removeQueries(["getAllNotification"])
       storage.removeItem()
     },
   })
@@ -44,8 +52,11 @@ const useAuthen = () =>{
   const userProfileQuery= useQuery({
     queryKey: ["userProfile"],
     enabled: token !== null,
+    retry:false,
     queryFn: () => getUserProfile(),
     onSuccess:(data: User) =>{
+      // queryClient.refetchQueries(["getAllUser"])
+      // queryClient.refetchQueries(["userProfile"])
       dispatch(authSignInAsync(data))
     },
   })

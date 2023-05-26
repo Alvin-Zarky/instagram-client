@@ -8,6 +8,9 @@ const useDeletePost = () =>{
     mutationFn:(id:number) => deletePost(id),
     onSuccess:() =>{
       queryClient.refetchQueries(["getAllPost"])
+      queryClient.refetchQueries(["getPostUser"])
+      queryClient.refetchQueries(["getUserSavePost"])
+      queryClient.refetchQueries(["getPostByAccount"])
     }
   })
 }

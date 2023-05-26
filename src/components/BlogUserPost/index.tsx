@@ -8,16 +8,19 @@ import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlin
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 import { BlogPost, PostPartial } from "../../types/post";
 import BoxConfigSetting from "./BoxConfigSetting";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
 import BoxPopUpComment from "./BoxPopUpComment";
 import moment from "moment";
 import { useAppSelector } from "../../app/hooks";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useSubmit } from "../../hook/post/useSubmit";
 import { useDeletePost } from "../../hook/post/useDeletePost";
-import "./blog-user-post.scss";
 import BoxSharePost from "./BoxSharePost";
+import "./blog-user-post.scss";
+import { useSavePostUser } from "../../hook/post/useSavePostUser";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
+import MediaTypes from "../MediaTypes";
+import { Link } from "react-router-dom";
+import { Router } from "../../routers/route";
 
 export default function BlogUserPost({
   username,
@@ -29,6 +32,9 @@ export default function BlogUserPost({
   description,
   userId,
   id,
+  saveBy,
+  isHideLike,
+  isShowLike,
 }: BlogPost) {
   const [comment, setComment] = useState("");
   const [isShowPopUp, setIsShowPopUp] = useState(false);
@@ -39,6 +45,7 @@ export default function BlogUserPost({
   const { user: auth } = useAppSelector((state) => state.auth);
   const { onSubmitComment, onSubmitLikePost } = useSubmit();
   const deleteUserPost = useDeletePost();
+  const savePostUser = useSavePostUser();
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     if (comment !== "") {
@@ -57,14 +64,25 @@ export default function BlogUserPost({
   }, [isShowPopUp, isShowComment]);
 
   const active = likes?.some((val: PostPartial) => val.id === auth?.id);
+  const activeBookMark = saveBy?.some(
+    (val: PostPartial) => val.id === auth?.id
+  );
 
   return (
     <>
       <div className="box-container-post">
         <div className="top-header-post">
           <div>
-            <img src={user ?? DEFAULT_USER} alt="user-profile" />
-            <span>{username}</span>
+            <Link
+              to={
+                auth?.id === userId
+                  ? `${Router.PROFILE}/${username}`
+                  : `${Router.ACCOUNT_USER}/${username}`
+              }
+            >
+              <img src={user ?? DEFAULT_USER} alt="user-profile" />
+              <span>{username}</span>
+            </Link>
             <span className="hour-ago"> . {moment(createdAt).fromNow()}</span>
           </div>
           <div
@@ -77,23 +95,7 @@ export default function BlogUserPost({
           </div>
         </div>
         <div className="box-image-slider-post">
-          {photo?.length === 1 ? (
-            <img src={photo[0]} alt="singleGallary" />
-          ) : (
-            <Swiper
-              modules={[Navigation, Pagination, Scrollbar, A11y]}
-              spaceBetween={50}
-              slidesPerView={1}
-              navigation
-              pagination={{ clickable: true }}
-            >
-              {photo?.map((val: string, ind: number) => (
-                <SwiperSlide key={ind}>
-                  <img src={val} alt="gallary" />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          )}
+          <MediaTypes photo={photo} />
         </div>
         <div className="footer-container-post">
           <div className="icon-reaction">
@@ -126,11 +128,19 @@ export default function BlogUserPost({
                 <ShareOutlinedIcon />
               </span>
             </div>
-            <div>
-              <BookmarkBorderOutlinedIcon />
+            <div
+              onClick={() => {
+                savePostUser.mutate(id);
+              }}
+            >
+              {activeBookMark ? (
+                <BookmarkIcon />
+              ) : (
+                <BookmarkBorderOutlinedIcon />
+              )}
             </div>
           </div>
-          {likes?.length! > 0 && (
+          {!isHideLike && likes?.length! > 0 && (
             <div className="user-like-post">
               <span>
                 {likes?.length} like{likes?.length! > 1 && "s"}
@@ -191,6 +201,17 @@ export default function BlogUserPost({
           ></div>
           {isSharePost && <BoxSharePost />}
           {isShowComment && (
+            // <PostContext.Provider
+            //   value={{
+            //     id,
+            //     description,
+            //     likes,
+            //     comments,
+            //     photo,
+            //     username,
+            //     user,
+            //   }}
+            // >
             <BoxPopUpComment
               id={id}
               description={description}
@@ -199,7 +220,19 @@ export default function BlogUserPost({
               photo={photo}
               username={username}
               user={user}
+              saveBy={saveBy}
+              userId={userId}
+              activeBookMark={activeBookMark}
+              isShowConfig={() => {
+                setIsShowConfig(true);
+              }}
+              isShowPopUp={() => {
+                setIsShowPopUp(false);
+              }}
+              isHideLike={isHideLike}
+              isShowLike={isShowLike}
             />
+            // </PostContext.Provider>
           )}
           {isShowConfig && (
             <BoxConfigSetting

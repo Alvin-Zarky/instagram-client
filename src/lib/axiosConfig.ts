@@ -5,9 +5,10 @@ import { API_URL } from "../config/env"
 const authRequest= (config:InternalAxiosRequestConfig) =>{
   config.headers = config.headers ?? {}
 
-  const storage= new Storage("token")
-  if(storage.getItem()){
-    config.headers.Authorization = `Bearer ${storage.getItem()}`
+  // const storage= new Storage("token")
+  const token = localStorage.getItem("token") ? JSON.parse(localStorage.getItem("token")!) : ''
+  if(token !== ''){
+    config.headers.Authorization = `Bearer ${token}`
   }
   
   return config

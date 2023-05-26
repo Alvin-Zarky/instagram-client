@@ -1,3 +1,5 @@
+@import "../../../assets/scss/variable.scss";
+
 .box-share-post {
   position: fixed;
   top: 50%;
@@ -5,5 +7,102 @@
   transform: translate(-50%, -50%);
   z-index: 200;
   background-color: white;
-  border-radius: 5px;
+  width: 550px;
+  margin: auto;
+  border-radius: 13px;
+  // border-top-left-radius: 13px;
+  // border-top-right-radius: 13px;
+  .box-header-post {
+    text-align: center;
+    border-bottom: 1px solid #d5d5d5dd;
+    padding: 12px;
+    span {
+      font-family: $font-apple-system;
+      font-weight: 550;
+      font-size: 16px;
+    }
+  }
+  .form-submission {
+    border-bottom: 1px solid #d5d5d5dd;
+    form {
+      padding: 10px 7px;
+      input {
+        width: 100%;
+        font-family: $font-apple-system;
+        font-size: 13px;
+        padding: 4px 12px;
+        outline: none;
+        border: none;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+  .user-friends {
+    margin-top: 14px;
+    span {
+      font-family: $font-apple-system;
+      font-weight: 550;
+      font-size: 14px;
+      padding: 14px 17px;
+    }
+    .list-user-friends {
+      margin-top: 10px;
+      // margin-bottom: 7px;
+      height: 270px;
+      overflow-y: scroll;
+      .user-flex-box {
+        padding: 8px 17px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        img {
+          height: 40px;
+          border-radius: 50px;
+          object-fit: cover;
+          object-position: center;
+          margin-right: 10px;
+        }
+        span {
+          font-family: $font-apple-system;
+          font-weight: 550;
+          font-size: 13px;
+          padding: 0;
+        }
+        input {
+          margin-right: 15px;
+        }
+      }
+      .user-flex-box:hover {
+        background-color: #f0f0f0;
+      }
+    }
+  }
+  .button-submit {
+    width: 100%;
+    padding: 17px 17px;
+    border: 1px solid #d5d5d5dd;
+    border-bottom-left-radius: 13px;
+    border-bottom-right-radius: 13px;
+    button {
+      background-color: rgb(85, 167, 255);
+      color: white;
+      font-family: $font-apple-system;
+      font-weight: 550;
+      font-size: 14px;
+      width: 100%;
+      padding: 10px;
+      border-radius: 7px;
+      border: none;
+      &:hover {
+        background-color: rgb(28, 136, 251);
+      }
+    }
+  }
+  .disabled {
+    pointer-events: none;
+    opacity: 0.6;
+  }
 }

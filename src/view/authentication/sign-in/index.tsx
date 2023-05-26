@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container } from "reactstrap";
 import { LOGO_INSTAGRAM } from "../../../constant/images";
 import FormBottomBar from "../../../components/FormBottomBar";
 import HelmetTitleBar from "../../../components/TitleBar";
 import useAuthen from "../../../hook/auth/useAuth";
+import { NavLink } from "react-router-dom";
+import { Router } from "../../../routers/route";
 import "./sign-in.scss";
 
 export default function SignInScreen() {
@@ -27,6 +29,10 @@ export default function SignInScreen() {
     );
   };
 
+  useEffect(() => {
+    document.body.style.overflowY = "visible";
+  }, []);
+
   return (
     <>
       <HelmetTitleBar title={"Login - Instagram Clone"} />
@@ -42,7 +48,7 @@ export default function SignInScreen() {
                   <div>
                     <input
                       type="text"
-                      placeholder="Phone number, username, or email"
+                      placeholder="Email or username..."
                       value={email}
                       onChange={(e) => {
                         setEmail(e.target.value);
@@ -62,6 +68,11 @@ export default function SignInScreen() {
                       autoComplete="false"
                       required
                     />
+                  </div>
+                  <div className="forgot-password">
+                    <NavLink to={Router.FORGOT_PASSWORD}>
+                      Forgot password?
+                    </NavLink>
                   </div>
                   <div className="form-agreement">
                     <span>

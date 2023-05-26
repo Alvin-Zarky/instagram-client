@@ -1,0 +1,22 @@
+@import "../../assets/scss/variable.scss";
+
+.help-body-partial {
+  a {
+    text-decoration: none;
+    color: black;
+    &:focus {
+      color: black;
+    }
+  }
+  .help-center {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    cursor: pointer;
+    span {
+      font-family: $font-apple-system;
+      font-weight: normal !important;
+      font-size: 15px !important;
+    }
+  }
+}

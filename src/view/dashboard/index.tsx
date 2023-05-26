@@ -1,34 +1,104 @@
 import React, { useEffect } from "react";
 import HelmetTitleBar from "../../components/TitleBar";
 import SideMenuBar from "../../components/SideMenuBar";
-import { DEFAULT_USER } from "../../constant/images";
-import BoxProfileStory from "../../components/BoxProfileStory";
+import { DEFAULT_USER, LOADING } from "../../constant/images";
 import BoxUserSuggestion from "../../components/BoxUserSuggestion";
-import { User } from "../../types/authentication";
 import BlogUserPost from "../../components/BlogUserPost";
 import { useGetAllUser } from "../../hook/user/useGetUser";
-import { useGetAllPost } from "../../hook/post/useGetPost";
 import { Post } from "../../types/post";
-import { socket } from "../../config/socketIo";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "./dashboard.scss";
+import { useGetPostInifiniteScroll } from "../../hook/post/useGetPost";
+import useAuthen from "../../hook/auth/useAuth";
+import { useAppSelector } from "../../app/hooks";
+import ProfileStorySlider from "../../components/ProfileStorySlider";
 
-export default function DashboardScreen({ profile }: { profile?: User }) {
-  const { data } = useGetAllUser();
-  const { data: post } = useGetAllPost();
+// { profile }: { profile: User }
+export default function DashboardScreen() {
+  // const {
+  //   userProfileQuery: { data: user },
+  // } = useAuthen();
+
+  const { user: profile } = useAppSelector((state) => state.auth);
+  // const dispatch = useAppDispatch();
+
+  // if (user) dispatch(authSignInAsync(user));
+
+  // console.log("profile", profile);
+
+  const {
+    data: post,
+    hasNextPage,
+    // isLoading,
+    fetchNextPage,
+  } = useGetPostInifiniteScroll();
+
+  // const { data: post } = useGetAllPost();
+  // const { data } = useGetAllUser();
+  // console.log(post);
+  // console.log(data);
+
+  // const { data: save } = useGetUserSavePost();
+  // const {
+  //   data: post,
+  //   hasNextPage,
+  //   isError,
+  //   isLoading,
+  //   fetchNextPage,
+  // } = useInfiniteQuery(
+  //   "repositories",
+  //   ({ pageParam }) => getAllPostOnScroll(pageParam),
+  //   {
+  //     getNextPageParam: (lastPage: any, allPages: any) => {
+  //       const maxPages = lastPage.dataCount / 5;
+  //       const nextPage = allPages.length + 1;
+  //       return nextPage <= maxPages ? nextPage : undefined;
+  //     },
+  //   }
+  // );
+
+  // const queryClient = useQueryClient();
+  // useEffect(() => {
+  //   queryClient.refetchQueries(["userProfile"]);
+  //   queryClient.refetchQueries(["getAllUser"]);
+  //   // queryClient.invalidateQueries({ queryKey: ["userProfile"] });
+  //   // queryClient.invalidateQueries({ queryKey: ["getAllUser"] });
+  // }, [queryClient]);
+  // useEffect(() => {
+  //   socket.connect();
+  //   socket.on("post-data", (data) => {
+  //     if (data) {
+  //       queryClient.invalidateQueries({ queryKey: ["getAllPost"] });
+  //       queryClient.refetchQueries(["getPostUser"]);
+  //       queryClient.refetchQueries(["getUserSavePost"]);
+  //     }
+  //   });
+
+  //   return () => {
+  //     socket.disconnect();
+  //     socket.off("post-data");
+  //     console.clear();
+  //   };
+  // }, [queryClient]);
 
   useEffect(() => {
-    socket.connect();
-    socket.on("post-data", (data: Post) => {
-      console.log(data);
-    });
-
-    return () => {
-      socket.disconnect();
-      socket.off("post-data");
+    let fetching = false;
+    const onScroll = async (event: any) => {
+      const scrollEvent = event.target as Document;
+      const { scrollHeight, scrollTop, clientHeight } =
+        scrollEvent.scrollingElement as Element;
+      if (!fetching && scrollHeight - scrollTop <= clientHeight * 1.5) {
+        fetching = true;
+        if (hasNextPage) await fetchNextPage();
+        fetching = false;
+      }
     };
-  }, []);
+
+    document.addEventListener("scroll", onScroll);
+    return () => {
+      document.removeEventListener("scroll", onScroll);
+    };
+  }, [fetchNextPage, hasNextPage]);
+  const showLike = false;
 
   return (
     <>
@@ -38,41 +108,49 @@ export default function DashboardScreen({ profile }: { profile?: User }) {
         <div className="body-contain-dashboard">
           <div className="side-dashboard-flex">
             <div className="left-side-dashboard">
-              <div className="profile-story-slider">
-                <Swiper
-                  modules={[Navigation, Pagination, Scrollbar, A11y]}
-                  spaceBetween={-30}
-                  slidesPerView={7}
-                  navigation
-                  pagination={{ clickable: true }}
-                >
-                  {data?.map((val: User, ind: number) => (
-                    <SwiperSlide key={ind}>
-                      <BoxProfileStory
-                        key={ind}
-                        title={val.name!}
-                        image={val.photo!}
-                      />
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              </div>
+              <ProfileStorySlider />
+
               <div className="box-all-scroll-post">
                 <div className="blog-post">
-                  {post?.map((val: Post, ind: number) => (
+                  {post?.pages.map((page) =>
+                    page?.data.map((val: Post, ind: number) => (
+                      <BlogUserPost
+                        key={ind}
+                        id={val.id!}
+                        userId={val.userId}
+                        username={val.user!.name!}
+                        createdAt={val.createdAt}
+                        photo={val.media}
+                        likes={val.likes}
+                        comments={val.comments}
+                        user={val.user!.photo!}
+                        description={val.text}
+                        saveBy={val.saveBy}
+                        isHideLike={val.user?.isHideLike}
+                        isShowLike={showLike}
+                      />
+                    ))
+                  )}
+                  {hasNextPage && (
+                    <div className="loading-constructor">
+                      <img src={LOADING} alt="loading" />
+                    </div>
+                  )}
+                  {/* {post?.map((val: Post, ind: number) => (
                     <BlogUserPost
                       key={ind}
-                      id={val.id}
+                      id={val.id!}
                       userId={val.userId}
-                      username={val.user.name!}
+                      username={val.user!.name!}
                       createdAt={val.createdAt}
                       photo={val.media}
                       likes={val.likes}
                       comments={val.comments}
-                      user={val.user.photo!}
+                      user={val.user!.photo!}
                       description={val.text}
+                      saveBy={val.saveBy}
                     />
-                  ))}
+                  ))} */}
                 </div>
               </div>
             </div>
@@ -81,6 +159,13 @@ export default function DashboardScreen({ profile }: { profile?: User }) {
                 <div className="box-image-user">
                   <img
                     src={profile?.photo ?? DEFAULT_USER}
+                    style={{
+                      borderRadius: "50px",
+                      height: "53px",
+                      width: "53px",
+                      objectFit: "cover",
+                      objectPosition: "center",
+                    }}
                     alt="my-user-profile"
                   />
                   <div className="box-title-user">

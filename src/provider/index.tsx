@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { store } from "../app/store";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { AppChildren } from "../types/provider";
+import { APP_ENV } from "../config/env";
 
 const client = new QueryClient();
 
@@ -12,7 +13,9 @@ function AppProviders({ children }: AppChildren) {
     <>
       <QueryClientProvider client={client}>
         <Provider store={store}>{children}</Provider>
-        <ReactQueryDevtools initialIsOpen={true} />
+        {APP_ENV === "development" && (
+          <ReactQueryDevtools initialIsOpen={true} />
+        )}
       </QueryClientProvider>
     </>
   );

@@ -1,24 +1,30 @@
 import { User } from "./authentication"
 
 export interface Post{
-  id: number,
-  text: string,
-  media: string[],
-  likes: PostPartial[],
-  comments: PostPartial[],
-  tags: any[],
-  user: User,
-  userId: number,
-  createdAt: Date,
-  updatedAt: Date,
-  remove:() => void 
+  id?: number,
+  uid?:string,
+  text?: string,
+  media?: string[],
+  likes?: PostPartial[],
+  comments?: PostPartial[],
+  tags?: any[],
+  user?: User,
+  userId?: number,
+  createdAt?: Date,
+  updatedAt?: Date,
+  postUserId?: number,
+  postId?:number,
+  saveBy?: PostPartial[],
+  remove?:() => void 
 }
 
 export interface PostPartial{
   id:number,
+  uid?:string,
   name: string,
   email: string,
   photo:string,
+  isHideLike?: boolean,
   comment?:string
 }
 
@@ -32,6 +38,13 @@ export interface BlogPost{
   comments?: PostPartial[],
   user: string,
   userId?: number,
+  savePostUserId?:number,
+  saveBy?: PostPartial[],
+  activeBookMark?: boolean,
+  isShowConfig?:() => void,
+  isShowPopUp?:() => void,
+  isHideLike?: boolean,
+  isShowLike?:boolean
   // onSubmit?(e:React.FormEvent):void
   // onSubmit?:() => void
 }
@@ -47,11 +60,19 @@ export interface UpdateLikeInPost{
   likes: PostPartial[],
 }
 
-// export interface PostBlog{
-//   id:number,
-//   comments:PostPartial[],
-//   likes:PostPartial[],
-//   userId: number,
-//   createdAt: Date,
-//   updatedAt: Date
-// }
+export interface PostInititState{
+  post: Post | null
+}
+
+export type ValuesCreatePost ={
+  isReady?: boolean,
+  fileLength?: number
+}
+
+export type CreatePostBlogValues={
+  text?:string,
+  media?: any[],
+  likes?: PostPartial[],
+  comments?: PostPartial[],
+  tags?:any[]
+}

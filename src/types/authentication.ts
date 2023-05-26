@@ -1,6 +1,7 @@
 
 export interface User{
   id?: number,
+  uid?: string,
   name?: string,
   email?: string,
   password?: string,
@@ -9,16 +10,26 @@ export interface User{
   isActive?: boolean,
   photo?: string,
   posts?:number,
+  photoDetail?: PhotoDetail,
   follower?:number,
   following?:number,
   bio?:string,
   links?:string,
+  isHideLike?:boolean,
+  isVerified?:boolean,
+  verifiedToken?:string,
+  verifiedExpired?:Date,
   createdAt?:Date,
   updatedAt?:Date,
   token?:string
 }
 
-export interface InitialState{
+export interface PhotoDetail{
+  public_id?: string,
+  delete_by_token?: string
+}
+
+export interface InitialStateAuth{
   user: User | null,
   isLoading: boolean,
   isError:boolean,
@@ -46,4 +57,14 @@ export type AuthRTKTypes={
   isSuccess:boolean,
   isError:boolean,
   message: string
+}
+
+export type TokenParam ={
+  token: string
+}
+
+export type ResetPasswordValues={
+  token: string,
+  newPassword: string,
+  confirmNewPassword: string
 }

@@ -10,7 +10,6 @@ const updatePostComment = async({id, comments}: UpdateCommentInPost): Promise<Po
 }
 
 const updatePostLike = async ({id, likes}: UpdateLikeInPost)=>{
-  
   const response= await customAxios.put(`${API_POST}/${id}`, { comments: [], likes })
   const {data} = response.data
 

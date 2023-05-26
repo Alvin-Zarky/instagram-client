@@ -1,0 +1,148 @@
+@import "../../assets/scss/variable.scss";
+
+.title-overview {
+  span {
+    font-weight: 400;
+  }
+}
+
+.custom-file-upload {
+  width: 100%;
+  cursor: pointer;
+  background-color: #fff;
+  border-radius: 4px;
+  font-family: $font-apple-system;
+  font-size: 14px;
+  font-weight: 550;
+  position: relative;
+}
+
+input[type="file"] {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  z-index: 100;
+}
+
+.body-overview {
+  width: 100%;
+  margin-top: 40px;
+  .flex-section {
+    display: flex;
+    margin-bottom: 25px;
+    .box-custom-message {
+      width: 80%;
+      margin: auto;
+      padding: 10px 13px;
+      margin-top: -10px;
+      border-radius: 5px;
+      margin-bottom: 25px;
+      background-color: rgb(233, 45, 45);
+      span {
+        font-family: $font-apple-system;
+        font-size: 14px !important;
+        color: white;
+        font-weight: normal !important;
+      }
+    }
+    .left-flex-section {
+      text-align: right;
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50px;
+        object-fit: cover;
+        object-position: center;
+      }
+      span {
+        font-family: $font-apple-system;
+        font-weight: 550;
+        font-size: 15px;
+      }
+    }
+    .right-flex-section {
+      input {
+        width: 80%;
+        border: 1px solid #eee;
+        font-family: $font-apple-system;
+        padding: 7px 10px;
+        font-size: 13px;
+        border-radius: 5px;
+        &:focus {
+          outline: none;
+        }
+      }
+      textarea {
+        @extend input;
+      }
+      .part-a {
+        margin-top: -5px;
+        span {
+          font-size: 14px;
+          font-weight: 550;
+          font-family: $font-apple-system;
+        }
+      }
+      .part-b {
+        margin-top: -4px;
+        cursor: pointer;
+        span {
+          font-family: $font-apple-system;
+          color: rgb(28, 120, 220);
+          font-size: 14px;
+        }
+        &:hover {
+          span {
+            color: rgb(17, 91, 141);
+          }
+        }
+      }
+      .detail {
+        font-family: $font-apple-system;
+        padding-right: 110px;
+        margin-top: 5px;
+        span {
+          font-size: 12px;
+          color: grey;
+          font-weight: normal;
+          line-height: 0px;
+        }
+      }
+      .right-check {
+        display: flex;
+        align-items: center;
+        input {
+          height: 15px;
+          margin-right: 18px;
+        }
+        span {
+          font-size: 14px;
+          font-family: $font-apple-system;
+          font-weight: 550;
+          padding-right: 50px;
+        }
+      }
+    }
+    .btn-submit {
+      margin-top: 40px;
+      border-radius: 10px;
+      padding: 6px 15px;
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+      background-color: rgb(49, 166, 255);
+      border: none;
+      span {
+        font-family: $font-apple-system;
+        font-family: 550;
+        font-size: 14px;
+        color: white;
+      }
+    }
+  }
+}

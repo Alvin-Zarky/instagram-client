@@ -5,6 +5,26 @@
 a {
   text-decoration: none;
 }
+body {
+  overflow-x: hidden;
+}
+
+.pad-l0-r0 {
+  padding-left: 0;
+  padding-right: 0;
+}
 .padd-b0 {
   margin-bottom: 10px !important;
+}
+.m-b10 {
+  margin-bottom: 10px !important;
+}
+
+.loading-constructor {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  img {
+    height: 25px;
+  }
 }

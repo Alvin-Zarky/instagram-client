@@ -13,10 +13,12 @@
         width: 68%;
         overflow: hidden;
         padding-right: 70px;
+        a {
+          color: black;
+        }
         .profile-story-slider {
-          // display: flex;
-          // gap: 25px;
-          // justify-content: center;
+          width: 620px !important;
+          margin: auto;
           .swiper-button-prev::after,
           .swiper-button-next::after {
             font-size: 15px;

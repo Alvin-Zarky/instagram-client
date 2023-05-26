@@ -1,4 +1,4 @@
-import { AuthObjectValues } from "../../types/authentication"
+import { AuthObjectValues, User } from "../../types/authentication"
 import { customAxios } from "../../lib/axiosConfig"
 import { API_USER } from "../../config/env"
 
@@ -36,12 +36,25 @@ const userLogOut = async () =>{
 
 }
 
-const getUserProfile= async() =>{
-
+const getUserProfile= async():Promise<User> =>{
   const response= await customAxios.get(`${API_USER}/profile`)
   const {data}= response.data
   
-  if(data) return data
+  return data
+  // const token = localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')!) : null
+  // try{
+  //   let config = {
+  //     headers: {
+  //       'Authorization': `Bearer ${token}`
+  //     }
+  //   }
+  //   const response= await axios.get(`${API_USER}/profile`, config)
+  //   const {data}= response.data
+    
+  //   if(data) return data
+  // }catch(err){
+  //   console.log(err)
+  // }
 
 }
 

@@ -1,0 +1,83 @@
+@import "../../../assets/scss/variable.scss";
+
+.footer-bottom-page {
+  text-align: center;
+  margin: auto;
+  margin-top: 250px;
+  span {
+    font-family: $font-apple-system;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: #ddd;
+  }
+}
+.class-page-verify {
+  width: 70%;
+  margin: auto;
+  margin-top: 70px;
+  .verify-content-description {
+    font-family: $font-apple-system;
+    .title-page {
+      margin-bottom: 25px;
+      span {
+        font-weight: 600;
+        font-size: 27px;
+      }
+    }
+    .detail,
+    .description-go-ahead {
+      margin-bottom: 25px;
+      p {
+        font-size: 13px;
+      }
+    }
+    .user-email {
+      margin-bottom: 20px;
+      span {
+        font-size: 18px;
+        font-weight: 550;
+      }
+    }
+    .resend-verification-email {
+      margin-top: 20px;
+      cursor: pointer;
+      display: inline-block;
+      span {
+        font-weight: 550;
+        font-size: 14px;
+        color: rgb(27, 103, 255);
+      }
+    }
+    .back-to-auth {
+      margin-top: 12px;
+      span {
+        font-size: 13px;
+      }
+    }
+    .box-alert-message {
+      background-color: rgb(230, 67, 67);
+      border-radius: 3px;
+      padding: 10px 55px;
+      max-width: 330px;
+      text-align: center;
+      // display: inline-block;
+      align-items: center;
+      justify-content: center;
+      margin-top: 50px;
+      span {
+        font-family: $font-apple-system;
+        font-size: 13px;
+        color: white;
+      }
+    }
+  }
+  .mail-inbox {
+    text-align: right;
+    img {
+      height: 250px;
+      object-fit: cover;
+      object-position: center;
+      pointer-events: none;
+    }
+  }
+}

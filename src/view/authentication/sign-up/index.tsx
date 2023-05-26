@@ -5,6 +5,8 @@ import { LOGO_INSTAGRAM } from "../../../constant/images";
 import HelmetTitleBar from "../../../components/TitleBar";
 import useAuthen from "../../../hook/auth/useAuth";
 import "./sign-up.scss";
+import { useHistory } from "react-router-dom";
+import { Router } from "../../../routers/route";
 
 export default function SignUpScreen() {
   const [email, setEmail] = useState("");
@@ -14,6 +16,7 @@ export default function SignUpScreen() {
   const [message, setMessage] = useState("");
 
   const { registerMutation } = useAuthen();
+  const history = useHistory();
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,6 +31,7 @@ export default function SignUpScreen() {
       {
         onSuccess: () => {
           setMessage("");
+          history.push(Router.VERIFICATION);
         },
         onError: (error) => setMessage(error as string),
       }
@@ -51,7 +55,7 @@ export default function SignUpScreen() {
                   <div>
                     <input
                       type="text"
-                      placeholder="Mobile Number or Email"
+                      placeholder="Email"
                       value={email}
                       onChange={(e) => {
                         setEmail(e.target.value);

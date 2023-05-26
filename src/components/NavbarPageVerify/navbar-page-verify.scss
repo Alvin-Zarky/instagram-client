@@ -1,0 +1,46 @@
+@import "../../assets/scss/variable.scss";
+
+.header-navbar-instagram {
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+
+  .header-container {
+    width: 70%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .logo-img {
+      margin-top: 5px;
+      display: inline-block;
+      img {
+        height: 40px;
+      }
+    }
+    .btn-flex {
+      display: flex;
+      gap: 17px;
+      align-items: center;
+      .btn-log-in {
+        background-color: #5aafff;
+        font-family: $font-apple-system;
+        font-size: 14px;
+        font-weight: 550;
+        padding: 6px 15px;
+        border-radius: 10px;
+        display: inline-block;
+        span {
+          color: white;
+        }
+      }
+      .btn-sign-up {
+        color: #5aafff;
+        font-family: $font-apple-system;
+        font-weight: 550;
+        font-size: 14px;
+      }
+    }
+  }
+}

@@ -31,6 +31,16 @@
             border: 1px solid #eee;
           }
         }
+        .forgot-password {
+          text-align: right;
+          margin-bottom: 20px;
+          a {
+            font-family: "Barlow", sans-serif;
+            font-size: 13px;
+            font-weight: bolder;
+            color: rgb(41, 146, 243);
+          }
+        }
         .form-agreement {
           margin-top: 15px;
           margin-bottom: 20px;

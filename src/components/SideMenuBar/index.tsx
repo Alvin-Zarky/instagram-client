@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Router } from "../../routers/route";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ExploreIcon from "@mui/icons-material/Explore";
@@ -12,7 +11,6 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import ListMenuSide from "../../components/ListMenuSide";
 import ExploreOutlinedIcon from "@mui/icons-material/ExploreOutlined";
 import { RiChat1Line } from "react-icons/ri";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { LOGO_INSTAGRAM } from "../../constant/images";
@@ -20,11 +18,25 @@ import useAuthen from "../../hook/auth/useAuth";
 import { TbSettings } from "react-icons/tb";
 import { SlArrowRight } from "react-icons/sl";
 import { FiLogOut, FiBookmark } from "react-icons/fi";
+import { useAppSelector } from "../../app/hooks";
+import useToggleBodyOverflow from "../../hook/util/useToggleBodyOverflow";
+import BoxCreatePostBlog from "../BoxCreatePost";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 import "./side-menu-bar.scss";
+import SideMobileMenu from "./SideMobileMenu";
 
 export default function SideMenuBar() {
   const [togglePopUp, setTogglePopUp] = useState(false);
+  const [isCreated, setIsCreated] = useState(false);
+  const [isActive, setIsActive] = useState(false);
+  const [isNotification, setIsNotification] = useState(false);
+  const [isPopUp, setIsPopUp] = useState(false);
+
+  const { user } = useAppSelector((state) => state.auth);
   const { logOutMutation } = useAuthen();
+
+  useToggleBodyOverflow(isCreated || isPopUp);
 
   return (
     <>
@@ -54,20 +66,48 @@ export default function SideMenuBar() {
               from={<RiChat1Fill />}
               to={<RiChat1Line />}
             />
+            <div
+              className={`${!isNotification && "normal"}`}
+              onClick={() => {
+                setIsNotification(true);
+                setIsPopUp(true);
+              }}
+            >
+              <ListMenuSide
+                link={`#`}
+                title="Notifcations"
+                from={<FavoriteBorderIcon />}
+                to={
+                  isNotification ? (
+                    <FavoriteOutlinedIcon />
+                  ) : (
+                    <FavoriteBorderIcon />
+                  )
+                }
+              />
+            </div>
+            <div
+              className={`${!isActive && "normal"}`}
+              onClick={() => {
+                setIsCreated(true);
+                setIsActive(true);
+              }}
+            >
+              <ListMenuSide
+                link={`#`}
+                title="Create"
+                from={<AddCircleIcon />}
+                to={
+                  isActive ? (
+                    <AddCircleIcon />
+                  ) : (
+                    <AddCircleOutlineOutlinedIcon />
+                  )
+                }
+              />
+            </div>
             <ListMenuSide
-              link={Router.NOTIFICATION}
-              title="Notifcations"
-              from={<FavoriteIcon />}
-              to={<FavoriteBorderOutlinedIcon />}
-            />
-            <ListMenuSide
-              link={Router.CREATE}
-              title="Create"
-              from={<AddCircleIcon />}
-              to={<AddCircleOutlineOutlinedIcon />}
-            />
-            <ListMenuSide
-              link={Router.PROFILE}
+              link={`${Router.PROFILE}/${user?.name}`}
               title="Profile"
               from={<AccountCircleIcon />}
               to={<AccountCircleOutlinedIcon />}
@@ -79,7 +119,7 @@ export default function SideMenuBar() {
             <div className="list-menu-more">
               <ul>
                 <li>
-                  <NavLink to={Router.SETTINGS}>
+                  <NavLink to={Router.EDIT_PROFILE}>
                     <div>
                       <TbSettings />
                       <span>Settings</span>
@@ -123,6 +163,44 @@ export default function SideMenuBar() {
           <span>More</span>
         </div>
       </div>
+      {isCreated && (
+        <>
+          <div
+            className="pop-up-modal"
+            style={{ zIndex: 250 }}
+            onClick={() => {
+              setIsCreated(false);
+              setIsActive(false);
+            }}
+          ></div>
+          <BoxCreatePostBlog
+            closePopUp={() => {
+              setIsCreated(false);
+              setIsActive(false);
+            }}
+          />
+        </>
+      )}
+      {isPopUp && (
+        <>
+          <div
+            className="pop-up-modal"
+            style={{ background: "transparent" }}
+            onClick={() => {
+              setIsPopUp(false);
+              setIsNotification(false);
+            }}
+          ></div>
+          <SideMobileMenu
+            setIsActive={setIsActive}
+            setIsCreated={setIsCreated}
+            setIsNotification={setIsNotification}
+            setIsPopUp={setIsPopUp}
+            isActive={isActive}
+            isNotification={isNotification}
+          />
+        </>
+      )}
     </>
   );
 }

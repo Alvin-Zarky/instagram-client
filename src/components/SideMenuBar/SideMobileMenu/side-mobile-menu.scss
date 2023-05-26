@@ -1,0 +1,113 @@
+@import "../../../assets/scss/variable.scss";
+
+.notification-side-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  width: 460px;
+  height: 100vh;
+  display: flex;
+  background-color: white;
+  border: 1px solid #eee;
+  overflow-y: scroll;
+  .left-menu-mobile-side {
+    padding: 10px 10px;
+    position: relative;
+    svg {
+      color: black;
+      font-size: 25px;
+    }
+    .mobile-icon-instagram {
+      margin-top: 35px;
+      margin-bottom: 40px;
+      margin-left: 10px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      li {
+        margin-bottom: 12px;
+        .active {
+          font-weight: bolder;
+        }
+        a {
+          display: block;
+          padding: 12px 10px;
+        }
+      }
+    }
+  }
+  .right-menu-notification {
+    width: 100%;
+    margin: 0;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 30px;
+    .span-title-bar {
+      // margin-bottom: 25px;
+      margin-bottom: 5px;
+      span {
+        font-family: $font-apple-system;
+        font-weight: 550;
+        font-size: 25px;
+      }
+    }
+    .notification-today {
+      padding-top: 15px;
+      padding-bottom: 25px;
+      border-bottom: 1px solid #eee;
+      .title-bar {
+        margin-bottom: 20px;
+        span {
+          font-weight: 550;
+          font-family: $font-apple-system;
+          font-size: 15px;
+        }
+      }
+      .data-activity {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 15px;
+        cursor: pointer;
+        .flex-activity {
+          display: flex;
+          align-items: center;
+        }
+        .user-profile-photo {
+          margin-right: 10px;
+          img {
+            height: 40px;
+            border-radius: 50px;
+          }
+        }
+        span {
+          font-family: $font-apple-system;
+          font-size: 13.5px;
+          color: black;
+          .user-name {
+            font-weight: 550;
+          }
+          .duration {
+            margin-left: 5px;
+            color: #8c8c8c;
+          }
+        }
+        .post-photo {
+          padding-left: 6px;
+          img {
+            width: 45px;
+            height: 45px;
+            border-radius: 5px;
+            object-fit: cover;
+            object-position: center;
+          }
+        }
+      }
+    }
+  }
+}

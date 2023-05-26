@@ -1,3 +1,5 @@
+@import "../../assets/scss/variable.scss";
+
 .left-menu-side {
   width: 21%;
   height: 100vh;
@@ -19,6 +21,12 @@
   }
   .side-menu-bar {
     margin-bottom: 240px;
+    position: relative;
+    .normal {
+      a {
+        font-weight: normal !important;
+      }
+    }
     ul {
       list-style: none;
       padding: 0;

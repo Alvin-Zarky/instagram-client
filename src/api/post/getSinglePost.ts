@@ -9,6 +9,14 @@ const getSinglePost = async(id:number):Promise<Post | undefined> =>{
   if(data) return data
 }
 
+const getPostByAccountUser = async (name:string) =>{
+  const response= await customAxios.get(`${API_POST}/account/${name}`)
+  const {data}= response.data
+
+  if(data) return data
+}
+
 export {
-  getSinglePost
+  getSinglePost,
+  getPostByAccountUser
 }

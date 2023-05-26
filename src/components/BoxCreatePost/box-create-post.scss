@@ -1,0 +1,174 @@
+@import "../../assets/scss/variable.scss";
+
+.resize-width {
+  width: 70% !important;
+}
+.container-create-box-post {
+  width: 40%;
+  background-color: white;
+  border-radius: 13px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 300;
+  .top-overview-create-post {
+    border-bottom: 1px solid #c4c4c4;
+    padding: 10px;
+    text-align: center;
+    span {
+      font-family: $font-apple-system;
+      font-size: 16px;
+      font-weight: 550;
+    }
+    .flex-column-post {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 10px;
+      align-items: center;
+      align-self: center;
+      svg {
+        font-size: 20px;
+        cursor: pointer;
+      }
+      .share-content {
+        cursor: pointer;
+        span {
+          font-family: $font-apple-system;
+          font-size: 14px;
+          font-weight: 550;
+          color: rgba(0, 149, 246) !important;
+        }
+        img {
+          height: 22px;
+        }
+      }
+    }
+  }
+  .flex-body-post {
+    display: flex;
+    height: 600px;
+    .pic-image-slider {
+      width: 65%;
+      height: 600px;
+      background-color: rgb(41, 41, 41);
+      border-bottom-left-radius: 13px !important;
+      margin: auto;
+      text-align: center;
+      video {
+        width: 100%;
+        height: 600px;
+        object-fit: contain;
+        object-position: center;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+      }
+      .image-slider-post {
+        width: 100%;
+        height: 600px;
+        text-align: center;
+        img {
+          width: 100%;
+          height: 600px;
+          object-fit: contain;
+          object-position: center;
+        }
+      }
+    }
+    .content-post-side {
+      width: 35%;
+      // background-color: red;
+      .top-header-post-side {
+        padding: 20px 20px;
+        img {
+          height: 30px;
+          margin-right: 10px;
+          border-radius: 25px;
+        }
+        span {
+          font-family: $font-apple-system;
+          font-weight: 550;
+          font-size: 14px;
+        }
+      }
+      .body-text-area {
+        width: 100%;
+        font-family: $font-apple-system;
+        font-size: 16px;
+        border-bottom: 1px solid #ddd;
+        margin-top: -5px;
+        textarea {
+          width: 100%;
+          border: none;
+          padding: 0px 20px;
+          height: 200px;
+          resize: none;
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+      .body-bottom-post-side {
+        // padding: 0 20px;
+        .add-features {
+          padding: 10px 20px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          cursor: pointer;
+          border-bottom: 1px solid #ddd;
+          span {
+            font-family: $font-apple-system;
+            font-size: 15px;
+          }
+          input {
+            width: 100%;
+            border: none;
+            font-family: $font-apple-system;
+            font-size: 15px;
+            &:focus {
+              outline: none;
+            }
+          }
+          svg {
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  }
+  .body-overview-create-post {
+    text-align: center;
+    padding-top: 90px;
+    padding-bottom: 120px;
+    .image-add-post {
+      margin-top: 50px;
+      img {
+        height: 100px;
+      }
+    }
+    .title-create-post {
+      margin-bottom: 25px;
+      font-family: $font-apple-system;
+      font-size: 18px;
+    }
+    .button-create-post {
+      margin-bottom: 60px;
+      display: inline-block;
+      button {
+        border: none;
+        color: white;
+        padding: 5px 12px;
+        font-family: $font-apple-system;
+        font-weight: 550;
+        font-size: 14px;
+        border-radius: 7px;
+        background-color: rgba(0, 149, 246) !important;
+      }
+    }
+  }
+}

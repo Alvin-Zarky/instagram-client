@@ -1,0 +1,37 @@
+@import "../../../assets/scss/variable.scss";
+
+.post-top-profile {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  span {
+    font-family: $font-apple-system;
+    font-size: 13px;
+    color: #a1a1a1;
+  }
+  .create-collection {
+    cursor: pointer;
+    span {
+      font-weight: 550;
+      color: rgb(67, 131, 234);
+      svg {
+        font-size: 15px;
+      }
+    }
+  }
+}
+.post-body-profile {
+  margin-top: 80px;
+}
+.img-loading {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  img {
+    height: 30px;
+  }
+}
+.box-collection {
+  justify-content: center;
+  margin-top: 20px;
+}

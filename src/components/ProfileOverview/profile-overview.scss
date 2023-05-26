@@ -1,0 +1,121 @@
+@import "../../assets/scss/variable.scss";
+
+.top-profile-header {
+  padding-bottom: 35px;
+  border-bottom: 1px solid #ddd;
+  .contain-flex {
+    display: flex;
+    padding: 0 120px;
+    .image-profile {
+      width: 27%;
+      margin-right: 20px;
+      img {
+        width: 130px;
+        height: 130px;
+        border-radius: 100px;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+    .user-profile-detail {
+      width: 73%;
+      .user-profile-flex {
+        display: flex;
+        gap: 30px;
+        align-items: center;
+        font-family: $font-apple-system;
+        .title-user-profile {
+          span {
+            font-size: 18px;
+            font-weight: 550;
+          }
+        }
+        a {
+          text-decoration: none;
+          color: black;
+        }
+        .button-user-profile {
+          background-color: #ededed;
+          padding: 7px 16px;
+          border-radius: 6px;
+          cursor: pointer;
+          display: flex;
+          align-self: center;
+          span {
+            font-size: 13px;
+            font-weight: 550;
+          }
+        }
+        .icon-setting-user-profile {
+          svg {
+            cursor: pointer;
+            font-size: 22px;
+          }
+        }
+      }
+      .user-rating-profile {
+        margin-top: 16px;
+        display: flex;
+        gap: 40px;
+        .user-rating {
+          span {
+            font-size: 16px;
+          }
+          .bold-text {
+            font-weight: 550;
+            margin-right: 3px;
+            font-size: 17px;
+          }
+        }
+      }
+      .user-description {
+        margin-top: 3px;
+        span {
+          font-size: 14px;
+          font-family: $font-apple-system;
+        }
+        p {
+          margin-top: 3px;
+          @extend span;
+        }
+      }
+      .email-user-profile {
+        margin-top: 17px;
+        span {
+          font-weight: 550;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+  .box-slider-story {
+    padding: 20px 80px;
+    .box-list-collection {
+      margin-top: 25px;
+      .box-collection {
+        img {
+          height: 80px !important;
+          border-radius: 50px;
+          object-fit: cover;
+          object-position: center;
+        }
+      }
+      .new-box-collection {
+        text-align: center;
+        height: 80px;
+        margin-top: 20px;
+        width: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50px;
+        cursor: pointer;
+        background-color: #fbfbfbdc;
+        border: 1px solid #ddd;
+        svg {
+          font-size: 35px;
+        }
+      }
+    }
+  }
+}
