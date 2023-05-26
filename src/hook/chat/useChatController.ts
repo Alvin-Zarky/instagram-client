@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { createUserTextMessage } from "../../api/chat/postMessage";
-import { Message } from "../../types/message";
+import { Message, UserMessage } from "../../types/message";
 import { getAllMessage, getAllUserMessage } from "../../api/chat/getMessage";
 import { deleteAllMessage, deleteMessage } from "../../api/chat/deleteMessage";
 import { UidMessageParam } from "../../types/util";
@@ -20,7 +20,7 @@ const useChatController = () => {
   });
 
   const useGetUserMessage = (uid:string) => useQuery({
-    // enabled: uid !== null,
+    enabled: uid !== null,
     queryKey: ["getMessage", uid],
     queryFn: () => getAllMessage(uid),
     // retry:false
@@ -32,8 +32,10 @@ const useChatController = () => {
     mutationKey: ["deleteMessage"],
     mutationFn:(values: UidMessageParam) => deleteMessage(values),
     onSuccess:(data) => {
-      queryClient.refetchQueries(["getMessage"])
-      queryClient.refetchQueries(["getMessage", data?.uid])
+      // queryClient.invalidateQueries({queryKey: ["getAllMessage"]})
+      // queryClient.refetchQueries(["getMessage"])
+      queryClient.invalidateQueries({queryKey: ["getMessage"]})
+      // queryClient.invalidateQueries({queryKey: ["getMessage", data?.id]})
       deleteSingleImageCloudinary(data as any)
       // socket.emit("message", data)
     }
@@ -43,6 +45,7 @@ const useChatController = () => {
     mutationKey:['deleteAllMessage'],
     mutationFn:(values: UidMessageParam) => deleteAllMessage(values),
     onSuccess:(data) => {
+      // queryClient.refetchQueries(["getAllMessage"])
       queryClient.refetchQueries(["getMessage"])
       deleteMultiImageCloudinary(data!)
       // socket.emit("message", data)

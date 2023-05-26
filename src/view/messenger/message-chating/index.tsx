@@ -54,11 +54,13 @@ export default function MessageChating() {
     useDeleteAllUserMessage,
   } = useChatController();
 
-  const { data: allMessages } = useGetUserMessage(id!);
-  const { data } = useGetAllUser();
   const {
     userProfileQuery: { data: auth },
   } = useAuthen();
+
+  const { data: allMessages } = useGetUserMessage(id!);
+  const { data } = useGetAllUser();
+
   // console.log(isError);
   // const { data: allUser } = useGetAllUser();
 
@@ -75,22 +77,22 @@ export default function MessageChating() {
     useCreateMessage.mutate({ text: "❤️", uid: id });
   };
 
-  useEffect(() => {
-    socket.connect();
-    socket.on("message", (value: UserMessage) => {
-      if (value !== null) {
-        // queryClient.refetchQueries(["getAllMessage"]);
-        queryClient.invalidateQueries({ queryKey: ["getMessage", value.id] });
-        // queryClient.refetchQueries(["getMessage", id]);
-      }
-    });
+  // useEffect(() => {
+  //   socket.connect();
+  //   socket.on("message", (value: UserMessage) => {
+  //     if (value !== null) {
+  //       // queryClient.invalidateQueries({ queryKey: ["getAllMessage"] });
+  //       queryClient.invalidateQueries({ queryKey: ["getMessage", value.id] });
+  //       // queryClient.refetchQueries(["getMessage", id]);
+  //     }
+  //   });
 
-    return () => {
-      socket.disconnect();
-      socket.off("message");
-      console.clear();
-    };
-  }, [queryClient]);
+  //   return () => {
+  //     socket.disconnect();
+  //     socket.off("message");
+  //     console.clear();
+  //   };
+  // }, [queryClient]);
 
   const userChat = data?.find((val: User) => val.uid === id);
   // const userChat = allUser?.find((val: User) => val.uid === id);

@@ -5,6 +5,6 @@ export const useGetAllNotification = () =>{
   return useQuery({
     queryKey:["getAllNotification"],
     queryFn:() => getAllActivitiesNotification(),
-    retry:false,
+    // retry:false,
   })
 }
